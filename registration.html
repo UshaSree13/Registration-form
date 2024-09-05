@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 110vh;
+        }
+
+        .registration-form {
+            background-color: #ffffff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            width: 300px;
+            max-width: 100%;
+            padding: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .password-strength {
+            margin-top: 10px;
+        }
+
+        .password-strength span {
+            display: block;
+            height: 8px;
+            margin-top: 5px;
+            border-radius: 4px;
+        }
+
+        .password-weak {
+            background-color: #ff7c7c;
+        }
+
+        .password-medium {
+            background-color: #ffd700;
+        }
+
+        .password-strong {
+            background-color: #7cfc00;
+        }
+
+        .form-group button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        .form-group button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="registration-form">
+        <h2>User Registration</h2>
+        <form id="userRegistrationForm">
+            <div class="form-group">
+                <label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" name="fullName" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <div class="password-strength">
+                    <span id="weak" class="password-weak"></span>
+                    <span id="medium" class="password-medium"></span>
+                    <span id="strong" class="password-strong"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+            </div>
+            <div class="form-group">
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" name="dob" required>
+            </div>
+            <div class="form-group">
+                <label>Gender:</label>
+                <label><input type="radio" name="gender" value="male"> Male</label>
+                <label><input type="radio" name="gender" value="female"> Female</label>
+                <label><input type="radio" name="gender" value="other"> Other</label>
+            </div>
+            <div class="form-group">
+                <label for="profilePicture">Profile Picture:</label>
+                <input type="file" id="profilePicture" name="profilePicture" accept="image/*">
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" id="terms" name="terms" required>
+                    I agree to the Terms and Conditions
+                </label>
+            </div>
+            <div class="form-group">
+                <button type="submit">Register</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('userRegistrationForm').addEventListener('submit', function(event) {
+            // Add your form submission logic here
+            event.preventDefault(); // Prevent the default form submission
+            // Perform form validation or AJAX submission if needed
+        });
+
+        // Password strength indicator
+        document.getElementById('password').addEventListener('input', function() {
+            var password = this.value;
+            var weak = document.getElementById('weak');
+            var medium = document.getElementById('medium');
+            var strong = document.getElementById('strong');
+
+            // Reset strength indicators
+            weak.style.backgroundColor = '';
+            medium.style.backgroundColor = '';
+            strong.style.backgroundColor = '';
+
+            // Check password strength
+            if (password.length >= 8) {
+                strong.style.backgroundColor = '#7cfc00';
+            } else if (password.length >= 6) {
+                medium.style.backgroundColor = '#ffd700';
+            } else {
+                weak.style.backgroundColor = '#ff7c7c';
+            }
+        });
+    </script>
+
+</body>
+
+</html>
